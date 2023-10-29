@@ -1,47 +1,38 @@
 commands:
-  docker-compose:
-    help: "Manage Docker Compose operations"
-    color: "blue"
-    subcommands:
-      up:
-        help: "Start services defined in docker-compose.yml"
-        color: "green"
-        type: "system"  # 类型为系统命令
-        script: "docker-compose up -d"
-  git:
+  cmd:
     help: "Manage Git operations"
-    color: "cyan"
+    color: "CYAN"  # 使用合法的 Colorama 颜色名称
     subcommands:
       fetch:
         help: "Fetch all branches from the remote repository"
-        color: "yellow"
+        color: "YELLOW"  # 使用合法的 Colorama 颜色名称
         type: "system"  # 类型为系统命令
         script: "git fetch --all"
-  custom-script:
+  python:
     help: "Run a custom Python script"
-    color: "magenta"
+    color: "MAGENTA"  # 使用合法的 Colorama 颜色名称
     subcommands:
-      my-script:
+      hello:
         help: "Run a custom Python script"
-        color: "white"
+        color: "WHITE"  # 使用合法的 Colorama 颜色名称
         type: "python"  # 类型为Python脚本
-        script: "path/to/your_script.py"
-  custom-bash:
+        script: "ws/python_script/python_example.py"
+  bash:
     help: "Run a custom Bash script"
-    color: "red"
+    color: "RED"  # 使用合法的 Colorama 颜色名称
     subcommands:
-      my-bash:
+      hello:
         help: "Run a custom Bash script"
-        color: "yellow"
+        color: "YELLOW"  # 使用合法的 Colorama 颜色名称
         type: "bash"  # 类型为Bash脚本
-        script: "path/to/your_script.sh"
-  custom-binary:
+        script: "ws/bash/bash_example.sh"
+  exec:
     help: "Run a custom binary executable"
-    color: "cyan"
+    color: "CYAN"  # 使用合法的 Colorama 颜色名称
     subcommands:
-      my-binary:
+      hello:
         help: "Run a custom binary executable"
-        color: "green"
+        color: "GREEN"  # 使用合法的 Colorama 颜色名称
         type: "binary"  # 类型为二进制可执行程序
-        script: "path/to/your_binary"
+        script: "none"
 

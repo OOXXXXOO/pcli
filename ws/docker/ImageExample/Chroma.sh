@@ -1,0 +1,2 @@
+docker pull chromadb/chroma
+

@@ -4,23 +4,7 @@ import subprocess
 import sys
 from colorama import Fore, Style
 
-import requests
-
-def load_config(config_url):
-    response = requests.get(config_url)
-    if response.status_code == 200:
-        config_data = yaml.safe_load(response.text)
-        return config_data
-    else:
-        print("Failed to download configuration file.")
-        sys.exit(1)
-
-# 允许用户指定配置文件的URL
-config_url = "https://example.com/config.yml"  # 请替换为你的配置文件URL
-
-config = load_config(config_url)
-
-ascii_art ="""
+ascii_art = """
 \033[91m __          _______        _____ _      _____ \033[0m
 \033[92m \ \        / / ____|      / ____| |    |_   _|\033[0m
 \033[93m  \ \  /\  / / (___ ______| |    | |      | |  \033[0m
@@ -31,7 +15,7 @@ ascii_art ="""
 
 
 def load_config():
-    with open('config.yaml', 'r') as config_file:
+    with open('ws/config.yaml', 'r') as config_file:
         config = yaml.safe_load(config_file)
     return config
 
@@ -60,6 +44,7 @@ def main():
 
     for cmd, info in config["commands"].items():
         cmd_parser = subparsers.add_parser(cmd, help=info["help"])
+        cmd_parser.add_argument("-?", "--show-help", action="store_true", help="Show help for subcommands")
         subcommand_parsers = cmd_parser.add_subparsers(dest="subcommand")
 
         for subcmd, subinfo in info["subcommands"].items():
@@ -71,7 +56,7 @@ def main():
     if args.command:
         command_info = config["commands"][args.command]
         subcommand_info = command_info["subcommands"].get(args.subcommand)
-        if args.help or not subcommand_info:
+        if args.show_help or not subcommand_info:
             print(f"Usage: ws {args.command} <subcommand>")
             print(f"{command_info['help']}\n")
             print("Available subcommands:")
