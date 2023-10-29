@@ -1,0 +1,47 @@
+commands:
+  docker-compose:
+    help: "Manage Docker Compose operations"
+    color: "blue"
+    subcommands:
+      up:
+        help: "Start services defined in docker-compose.yml"
+        color: "green"
+        type: "system"  # 类型为系统命令
+        script: "docker-compose up -d"
+  git:
+    help: "Manage Git operations"
+    color: "cyan"
+    subcommands:
+      fetch:
+        help: "Fetch all branches from the remote repository"
+        color: "yellow"
+        type: "system"  # 类型为系统命令
+        script: "git fetch --all"
+  custom-script:
+    help: "Run a custom Python script"
+    color: "magenta"
+    subcommands:
+      my-script:
+        help: "Run a custom Python script"
+        color: "white"
+        type: "python"  # 类型为Python脚本
+        script: "path/to/your_script.py"
+  custom-bash:
+    help: "Run a custom Bash script"
+    color: "red"
+    subcommands:
+      my-bash:
+        help: "Run a custom Bash script"
+        color: "yellow"
+        type: "bash"  # 类型为Bash脚本
+        script: "path/to/your_script.sh"
+  custom-binary:
+    help: "Run a custom binary executable"
+    color: "cyan"
+    subcommands:
+      my-binary:
+        help: "Run a custom binary executable"
+        color: "green"
+        type: "binary"  # 类型为二进制可执行程序
+        script: "path/to/your_binary"
+
